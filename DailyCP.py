@@ -7,13 +7,15 @@ import re
 import pyDes
 import base64
 import uuid
+import sys
+import getopt
 
 class DailyCP:
-    def __init__(self, host="sise.campusphere.net"):
+    def __init__(self, host="sise"):
         self.key = "ST83=@XV"#dynamic when app update
         self.t = str(int(round(time.time() * 1000)))
         self.session = requests.session()
-        self.host = host
+        self.host = host + ".campusphere.net"
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36",
             "X-Requested-With": "XMLHttpRequest",
@@ -181,21 +183,56 @@ class DailyCP:
         for item in confirmList:
             self.confirmNotice(item["noticeWid"])
 
+def main(argv):
+    try:
+        opts, args = getopt.getopt(argv, "h", [])
+        for opt, arg in opts:
+            if opt == '-h':
+                print("useage:\nDailyCP.py <school> <account> <password> <location>\n\n<school>: the address prefix of your school, if the address of your school is \"sise.campusphere.net\", then you can input sise.\n<account>: the login account of your school, usually is your student number.\n<password>: your login password.\n<location>: e.g.:中国广东省佛山市禅城区福贤路X号")
+                sys.exit()
+        if len(args) != 4:
+            print('useage: DailyCP.py <school> <account> <password> <location>')
+            sys.exit()
+    except getopt.GetoptError:
+        print('useage: DailyCP.py <school> <account> <password> <location>')
+        sys.exit()
+    else:
+        school = str(args[0])
+        account = str(args[1])
+        password = str(args[2])
+        address = str(args[3])
+    print("Login information：")
+    print("Account：" + account)
+    print("Password：" + password)
+    print("Location：" + address)
+    # sys.exit()
+    app = DailyCP(school)
+    flag = 0
+    while True:
+        # account = input("请输入帐号：")
+        # cap = ""
+        # if app.checkNeedCaptcha(account):
+        #     with io.open("Captcha.png", "wb") as file:
+        #         file.write(app.generateCaptcha())
+        #     cap = input("请输入验证码(Captcha.png)：")
+        # password = input("请输入密码：")
+        
+        ret = app.login(account, password)
+        time.sleep(3)
+        if ret:
+            print("Login succeeded.")
+            break
+        else:
+            flag = flag + 1
+            print("Login failed. Number of login attempts:" + str(flag))
+        if flag >= 10:
+            print("Can't login, exit.")
+            sys.exit()
+    # address = input("请输入定位地址：")  # "C-137平行宇宙，地球，中国" 中国广东省佛山市禅城区福贤路
+    app.autoComplete(address)
 
 if __name__ == "__main__":
-    app = DailyCP()
-    while True:
-        account = input("请输入帐号：")
-        #cap = ""
-        #if app.checkNeedCaptcha(account):
-        #    with io.open("Captcha.png", "wb") as file:
-        #        file.write(app.generateCaptcha())
-        #    cap = input("请输入验证码(Captcha.png)：")
-        password = input("请输入密码：")
-        ret = app.login(account, password)
-        if ret:break
-    address = input("请输入定位地址：")  # "C-137平行宇宙，地球，中国"
-    app.autoComplete(address)
+    main(sys.argv[1:])
 
 # Usage:
 #   just edit your id and password.
