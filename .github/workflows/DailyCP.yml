@@ -28,6 +28,7 @@ jobs:
           sudo -E apt-get -yqq install python3
       - name: Install extensions
         run: |
+          pip3 install setuptools
           pip3 install -r requirements.txt
       - name: Run program
         env:
