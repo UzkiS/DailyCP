@@ -23,7 +23,7 @@ python3 DailyCP.py sise 1640915111 password 中国广东省佛山市禅城区福
 0 9 * * * /usr/bin/python3 /home/pi/DailyCP/DailyCP.py sise 1640915111 password 中国广东省佛山市禅城区福贤路
 ```
 ### GitHub ACTIONS 自动签到
-Fork本项目，在你的仓库下点击Settings，增加`SCHOOL_NAME`、`ACCOUNT`、`PASSWORD`、`ADDRESS` 4个Secrets，分别对应上述的`<学校前缀> <账号> <密码> <定位地址>`，之后打开你仓库的ACTIONS就可以了。<br>
+Fork本项目，在你的仓库下点击Settings，增加`SCHOOL_NAME`、`ACCOUNT`、`PASSWORD`、`ADDRESS` 4个Secrets，分别对应上述的`<学校前缀> <账号> <密码> <定位地址>`，之后打开你仓库的ACTIONS，最后手动提交一次代码修改就能激活自动签到了。<br>
 ![Secrets](https://github.com/lemofire/AutoDailyCP/blob/master/Secrets.png)
 
 ##### 签到方式：
@@ -32,7 +32,7 @@ Fork本项目，在你的仓库下点击Settings，增加`SCHOOL_NAME`、`ACCOUN
 * push
 * 自己给自己star
 ###### 自动签到
-* 每6小时自动签到一次
+* 每3小时自动签到一次
 
 ## Credits
 * [Finch/FuckDailyCP](https://gitee.com/Finch1/FuckDailyCP)
