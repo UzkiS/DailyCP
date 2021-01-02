@@ -4,7 +4,7 @@
 # Author: 柠火
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-name: DailyCP
+name: AutoDailyCP
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
   watch:
     types: started
   schedule:
-    - cron: 0 */3 * * *
+    - cron: 0,30 4,5 * * *
 
 jobs:
   build:
@@ -37,4 +37,9 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           ADDRESS: ${{ secrets.ADDRESS }}
         run: |
-          python3 DailyCP.py ${SCHOOL_NAME} ${ACCOUNT} ${PASSWORD} ${ADDRESS}
+          python3 DailyCP.py ${SCHOOL_NAME} ${ACCOUNT} ${PASSWORD} ${ADDRESS} formdb
+      - name : Upload formdb
+        uses: actions/upload-artifact@master
+        with:
+          name: formdb
+          path: formdb
