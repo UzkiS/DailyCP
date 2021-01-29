@@ -2,7 +2,7 @@
 ## 简介
 今日校园自动打卡脚本。
 
-本项目是FuckDailyCP的旧版官改版，已同步近期更新，若无法使用，请移步[Finch/FuckDailyCP](https://gitee.com/Finch1/FuckDailyCP)
+本项目是FuckDailyCP的旧版官改版，无需添加formdb，已同步近期更新，若无法使用，请移步[Finch/FuckDailyCP](https://gitee.com/Finch1/FuckDailyCP)
 
 ## 使用说明
 ```bash
