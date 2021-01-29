@@ -12,7 +12,7 @@ import getopt
 
 class DailyCP:
     def __init__(self, host="sise"):
-        self.key = "ST83=@XV"#dynamic when app update
+        self.key = "b3L26XNL"#dynamic when app update
         self.t = str(int(round(time.time() * 1000)))
         self.session = requests.session()
         self.host = host + ".campusphere.net"
@@ -143,7 +143,10 @@ class DailyCP:
             "collectWid": collectWid,
             "schoolTaskWid": schoolTaskWid,
             "form": rows,
-            "address": address
+            "address": address,
+            "uaIsCpadaily":True,
+            "latitude": 0.0,
+            "longitude": 0.0
         }
         self.session.headers["Content-Type"] = "application/json"
         # self.session.headers["extension"] = "1" extension
