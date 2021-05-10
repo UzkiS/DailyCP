@@ -38,4 +38,4 @@ Fork本项目，在你的仓库下点击Settings，增加`SCHOOL_NAME`、`ACCOUN
 * 每3小时自动签到一次
 
 ## Credits
-* [Finch/FuckDailyCP](https://gitee.com/Finch1/FuckDailyCP)
+* [Finch/FKDailyCP](https://gitee.com/Finch1/FKDailyCP)
