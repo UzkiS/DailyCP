@@ -26,7 +26,8 @@ python3 DailyCP.py sise 1640915111 password 中国广东省佛山市禅城区福
 0 9 * * * /usr/bin/python3 /home/pi/DailyCP/DailyCP.py sise 1640915111 password 中国广东省佛山市禅城区福贤路
 ```
 ### GitHub ACTIONS 自动签到
----(已移除ACTION方式，据说 GitHub 官方不允许使用 Action 做签到或者续期类应用，否则会封禁项目甚至封号)---
+---(已移除ACTION方式，据说 GitHub 官方不允许使用 Action 做签到或者续期类应用，否则会封禁项目甚至封号，需要Actiion自己翻记录)---
+
 Fork本项目，在你的仓库下点击Settings，增加`SCHOOL_NAME`、`ACCOUNT`、`PASSWORD`、`ADDRESS` 4个Secrets，分别对应上述的`<学校前缀> <账号> <密码> <定位地址>`，之后打开你仓库的ACTIONS，最后手动提交一次代码修改就能激活自动签到了。<br>
 ![Secrets](https://github.com/lemofire/DailyCP/blob/master/doc/Secrets.png)
 
