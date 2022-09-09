@@ -116,7 +116,8 @@ class DailyCP:
         url = "https://{host}/wec-counselor-collector-apps/stu/collector/detailCollector".format(host=self.host)
         body = {
             "collectorWid": collectorWid
-        } self.session.headers["Content-Type"] = "application/json"
+        }
+        self.session.headers["Content-Type"] = "application/json"
         ret = self.session.post(url, data=json.dumps(body))
         print(ret.text)
         ret = json.loads(ret.text)["datas"]
